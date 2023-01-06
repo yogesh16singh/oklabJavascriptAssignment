@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Table</title>
+</head>
+
+<body>
+    <form id="form">
+        <input id="name" name="name" placeholder="Enter your name" type="text">
+        <input id="surname" name="surname" placeholder="Enter your surname" type="text">
+        <input type="text" id="address" name="address" placeholder="Enter your Address">
+        <input type="submit" value="save" onclick="clicked(event)">
+
+    </form>
+    <hr>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Address</th>
+                <th>Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Yogesh</td>
+                <td>Singh</td>
+                <td>Beawar</td>
+                <td>
+                    <button>View</button>
+                    <button>Edit</button>
+                    <button onclick="deleterow(this)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        var n = document.querySelector("#name");
+        var sn = document.querySelector("#surname");
+        var adr = document.querySelector("#address");
+        var tbody = document.querySelector("tbody");
+        function clicked(e) {
+            e.preventDefault();
+            // alert("hello");
+            tbody.innerHTML += ` <tr>
+                                <td>${n.value}</td>
+                                <td>${sn.value}</td>
+                                <td>${adr.value}</td>
+                                <td>
+                                    <button>View</button>
+                                    <button>Edit</button>
+                                    <button onclick="deleterow(this)">Delete</button>
+                                </td>
+                                </tr>`
+            n.value = sn.value = adr.value = "";
+        }
+        function deleterow(z) {
+
+            var delrow = z.closest("tr");
+            // console.log(delrow);
+            delrow.remove();
+        }
+    </script>
+</body>
+
+</html>
